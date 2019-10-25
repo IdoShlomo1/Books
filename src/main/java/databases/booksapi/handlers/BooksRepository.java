@@ -10,11 +10,8 @@ import databases.booksapi.beans.Book;
 public interface BooksRepository extends CrudRepository<Book, Integer>{
 	ArrayList<Book> findBooksByPriceBetween(double from, double to);
 	ArrayList<Book> findBooksByPriceLessThanEqual(double from);
-	
 	// Native SQL:
 	@Query(value="select * from Books b where b.name like %:name%", nativeQuery=true)
 	ArrayList<Book> findBooksContainName(String name);	
-	// --> delete this 
-	//	@Query(value = "UPDATE Books b SET b.price=%:price% WHERE b.id=%:id%", nativeQuery = true)
-	//	Book updateBookPrice(int id, double price);
+	
 }
